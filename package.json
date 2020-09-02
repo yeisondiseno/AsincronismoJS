@@ -2,9 +2,10 @@
   "name": "asincronismo-js",
   "version": "1.0.0",
   "description": "Curso de asincronismo en JavaScript",
-  "main": "index.js",
+  "main": "src/callback/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "callback": "node src/callback/index.js",
+    "callback:challenge": "node src/callback/challenge.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/yeisondiseno/AsincronismoJS/issues"
   },
-  "homepage": "https://github.com/yeisondiseno/AsincronismoJS#readme"
+  "homepage": "https://github.com/yeisondiseno/AsincronismoJS#readme",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
 }
