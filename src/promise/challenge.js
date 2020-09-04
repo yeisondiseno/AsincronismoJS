@@ -1,18 +1,17 @@
-let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const fetchData = require('../utils/fetchData');
 const API = 'https://rickandmortyapi.com/api/character/';
 
-function fetchData( url_api, callback ) {
-    let xhttp = new XMLHttpRequest(); 
-    xhttp.open('GET', url_api, true); // terecer parametro activa el asincronismo
-    xhttp.onreadystatechange = function ( event ) {
-        if(xhttp.readyState === 4){
-            if( xhttp.status === 200 ) {
-                callback(null, JSON.parse(xhttp.responseText));
-            } else {
-                const error = new Error('Error' + url_api);
-                return callback(error, null);
-            }
-        }
-    }
-    xhttp.send();
-}
+
+fetchData( API )
+    .then(data => {
+        console.log(data.info.count);
+        return fetchData(`${API}${data.results[0].id}`)
+    })
+    .then( data => {
+        console.log(data.name);
+        return fetchData(data.origin.url)
+    } )
+    .then(data => {
+        console.log(data.dimension)
+    })
+    .catch(err => console.error(err));
